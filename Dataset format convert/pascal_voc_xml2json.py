@@ -167,8 +167,8 @@ def parseXmlFiles(xml_path):
                     addAnnoItem(object_name, current_image_id, current_category_id, bbox )
 
 if __name__ == '__main__':
-    xml_path = 'uiqa_dataset/training'
-    json_file = 'Pascal_Dataset_in_COCO_Format.json'
+    xml_path = 'uiqa_dataset_mini_in_coco/val'
+    json_file = 'via_region_data.json'
     parseXmlFiles(xml_path)
     print('\nWriting into {}.....'.format(json_file))
     json.dump(coco, open(json_file, 'w'))

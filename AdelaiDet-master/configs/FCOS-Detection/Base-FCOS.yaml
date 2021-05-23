@@ -10,12 +10,12 @@ MODEL:
     NAME: "FCOS"
   # PIXEL_MEAN: [102.9801, 115.9465, 122.7717]
 DATASETS:
-  TRAIN: ("coco_2017_train",)
-  TEST: ("coco_2017_val",)
+  TRAIN: ("my_dataset_train",)
+  TEST: ("my_dataset_val",)
 SOLVER:
-  IMS_PER_BATCH: 16
+  IMS_PER_BATCH: 8
   BASE_LR: 0.01  # Note that RetinaNet uses a different default learning rate
-  STEPS: (60000, 80000)
-  MAX_ITER: 90000
+  STEPS: (20000, 30000)
+  MAX_ITER: 40000
 INPUT:
   MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800)

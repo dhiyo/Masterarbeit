@@ -20,7 +20,7 @@ import os
 from collections import OrderedDict
 import torch
 from torch.nn.parallel import DistributedDataParallel
-
+from detectron2.data.datasets import register_coco_instances
 import detectron2.utils.comm as comm
 from detectron2.data import MetadataCatalog, build_detection_train_loader
 from detectron2.engine import DefaultTrainer, default_argument_parser, default_setup, hooks, launch
@@ -207,6 +207,8 @@ def main(args):
 
 
 if __name__ == "__main__":
+    for d in ["train", "val"]:
+        register_coco_instances("my_dataset_" + d, {}, "uiqa_dataset_in_COCO_Format/" + d + '/via_region_data.json', 'uiqa_dataset_in_COCO_Format/' + d )
     args = default_argument_parser().parse_args()
     print("Command Line Args:", args)
     launch(

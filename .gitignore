@@ -1,4 +1,2 @@
-*.zip
-uiqa_dataset/
-uiqa_dataset_in_COCO_Format/
-
+*.json
+Dataset format convert/
