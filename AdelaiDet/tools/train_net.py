@@ -208,7 +208,7 @@ def main(args):
 
 if __name__ == "__main__":
     for d in ["train", "val"]:
-        register_coco_instances("my_dataset_" + d, {}, "uiqa_dataset_in_COCO_Format/" + d + '/via_region_data.json', 'uiqa_dataset_in_COCO_Format/' + d )
+    register_coco_instances("my_dataset_" + d, {}, '/content/drive/MyDrive/Local_Dataset/Json files/via_region_data_' + d + '.json', 'uiqa_dataset_in_COCO_Format/' + d )
     args = default_argument_parser().parse_args()
     print("Command Line Args:", args)
     launch(
