@@ -15,7 +15,7 @@ DATASETS:
 SOLVER:
   IMS_PER_BATCH: 8
   BASE_LR: 0.02  # Note that RetinaNet uses a different default learning rate
-  STEPS: (1000, 10000)
+  STEPS: (1000, 10000, 15000)
   MAX_ITER: 20000
 INPUT:
   MIN_SIZE_TRAIN: (640, 672, 704, 736, 768, 800) 

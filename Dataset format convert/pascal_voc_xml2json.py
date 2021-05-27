@@ -169,6 +169,9 @@ def parseXmlFiles(xml_path):
 if __name__ == '__main__':
     xml_path = 'uiqa_dataset_mini_in_coco/val'
     json_file = 'via_region_data.json'
+    with open('uiqa_dataset_in_COCO_Format/train/via_region_data.json') as f:
+        data_coco_dict = json.load(f)
+    category_item_id = data_coco_dict['categories']
     parseXmlFiles(xml_path)
     print('\nWriting into {}.....'.format(json_file))
     json.dump(coco, open(json_file, 'w'))
