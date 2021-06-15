@@ -13,18 +13,18 @@ category_set = dict()
 image_set = set()
 
 category_item_id = 0
-image_id = 20180000000
+image_id = 0
 annotation_id = 0
 
 def addCatItem(name):
     global category_item_id
     category_item = dict()
     category_item['supercategory'] = 'none'
-    category_item_id += 1
     category_item['id'] = category_item_id
     category_item['name'] = name
     coco['categories'].append(category_item)
     category_set[name] = category_item_id
+    category_item_id += 1
     return category_item_id
 
 def addImgItem(file_name, size):
@@ -167,11 +167,8 @@ def parseXmlFiles(xml_path):
                     addAnnoItem(object_name, current_image_id, current_category_id, bbox )
 
 if __name__ == '__main__':
-    xml_path = 'uiqa_dataset_mini_in_coco/val'
-    json_file = 'via_region_data.json'
-    with open('uiqa_dataset_in_COCO_Format/train/via_region_data.json') as f:
-        data_coco_dict = json.load(f)
-    category_item_id = data_coco_dict['categories']
+    xml_path = r'C:\Users\shang\Documents\yueqi_ws\Masterarbeit\Try Selenium\uiqa_mini'
+    json_file = 'uiqa_mini.json'
     parseXmlFiles(xml_path)
     print('\nWriting into {}.....'.format(json_file))
     json.dump(coco, open(json_file, 'w'))
