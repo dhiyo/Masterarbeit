@@ -6,7 +6,7 @@ import base64
 all_children = []
 
 
-def rekursive_screenshot_by_selector(url="https://www.google.com", selector='div'):  #去掉xpath项 加上递归模式参数
+def rekursive_screenshot_by_selector(url="https://www.google.com", selector='div'):
 
     driver = webdriver.Chrome()
     driver.get(url)
@@ -18,12 +18,12 @@ def rekursive_screenshot_by_selector(url="https://www.google.com", selector='div
     num_children = len(all_children)
     for i in range(num_children):
         child = all_children[i]
-        if child.rect['height'] != 0 and child.rect['width']:
+        if child.rect['height'] != 0 and child.rect['width'] != 0:
             im_child = child.screenshot_as_base64
             imgdata = base64.b64decode(im_child)
-            file = open(str(i)+'.jpg', 'wb')
+            file = open('2.try recursive sreenshots/'+ str(i)+'.jpg', 'wb')
             file.write(imgdata)
-            # TODO：
+            # TODO
             # new_selector = child.tag_name
             # return rekursive_screenshot_by_selector(url, new_selector)
 
@@ -51,6 +51,6 @@ def rekursive_screenshot_by_selector(url="https://www.google.com", selector='div
 #     im = im.crop((x, y, x + width, y + height))  # defines crop points
 #     im.save(filename)  # saves new cropped image
 if __name__ == "__main__":
-    rekursive_screenshot_by_selector(url='https://campus.studium.kit.edu/events/timetable.php')
+    rekursive_screenshot_by_selector(url='https://www.apple.com/de/')
 
 

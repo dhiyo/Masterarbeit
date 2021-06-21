@@ -1,2 +1,5 @@
 *.json
 Dataset format convert/
+*.zip
+uiqa_Auschnitte/
+*.jpg

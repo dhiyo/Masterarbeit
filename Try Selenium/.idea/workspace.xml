@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49a09db0-350c-4f97-86e8-2e4e0d1c86cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Dataset format convert/pascal_voc_xml2json.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Dataset format convert/pascal_voc_xml2json.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Objekte Ausschnitt mit Json.py" beforeDir="false" afterPath="$PROJECT_DIR$/Objekte Ausschnitt mit Json.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiqa mini/scene_00a34208-5b98-4c33-b7dd-19df2a6f6024.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiqa mini/scene_00a34208-5b98-4c33-b7dd-19df2a6f6024.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiqa mini/scene_00a3b10b-c136-4857-8c25-3666f137ab0d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiqa mini/scene_00a3b10b-c136-4857-8c25-3666f137ab0d.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiqa mini/scene_00a560cb-dba2-4011-908b-e35b63fb2df3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uiqa mini/scene_00a560cb-dba2-4011-908b-e35b63fb2df3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2.try recursive sreenshots.py" beforeDir="false" afterPath="$PROJECT_DIR$/2.try recursive sreenshots.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,27 +14,8 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Objekte Ausschnitt mit Json.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="13" column="60" lean-forward="true" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
-              <folding>
-                <element signature="e#1#22#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Dataset format convert/pascal_voc_xml2json.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2462">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/scan_my_dataset.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -70,28 +44,23 @@
         <option value="$PROJECT_DIR$/Try a screenshot.py" />
         <option value="$PROJECT_DIR$/1.Try a screenshot.py" />
         <option value="$PROJECT_DIR$/TEST.py" />
-        <option value="$PROJECT_DIR$/2.try recursive sreenshots.py" />
         <option value="D:/dataset/Dataset format convert/uiqa_dataset/training/scene_00a3b10b-c136-4857-8c25-3666f137ab0d.xml" />
         <option value="$PROJECT_DIR$/../Dataset format convert/pascal_voc_xml2json.py" />
         <option value="$PROJECT_DIR$/Objekte Ausschnitt mit Json.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/Try Selenium.iml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/web_recursive_screenshots/get_all_100_url.py" />
+        <option value="$PROJECT_DIR$/get_all_100_url.py" />
+        <option value="$PROJECT_DIR$/2.try recursive sreenshots.py" />
+        <option value="$PROJECT_DIR$/screenshots_from_100_urls.py" />
+        <option value="$PROJECT_DIR$/../../3D-point-cloud/HW3/KMeans.py" />
+        <option value="$PROJECT_DIR$/scan_my_dataset.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="407" />
-    <option name="y" value="1282" />
-    <option name="width" value="1360" />
-    <option name="height" value="388" />
+    <option name="x" value="-14" />
+    <option name="y" value="-14" />
+    <option name="width" value="2762" />
+    <option name="height" value="1770" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -99,6 +68,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -110,12 +80,17 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SCAN_with_custom_dataset/Unsupervised-Classification-master" />
     <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\shang\Documents\yueqi_ws\Masterarbeit\Try Selenium" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -129,28 +104,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Objekte Ausschnitt mit Json">
-    <configuration name="1.Try a screenshot" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Try Selenium" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1.Try a screenshot.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.scan_my_dataset">
     <configuration name="2.try recursive sreenshots" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Try Selenium" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -193,7 +147,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="TEST" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="get_all_100_url" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Try Selenium" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -205,7 +159,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TEST.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/get_all_100_url.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -214,7 +168,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pascal_voc_xml2json" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="scan_my_dataset" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Try Selenium" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -222,11 +176,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Dataset format convert" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../Dataset format convert/pascal_voc_xml2json.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scan_my_dataset.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="screenshots_from_100_urls" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Try Selenium" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/screenshots_from_100_urls.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -237,11 +212,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Objekte Ausschnitt mit Json" />
-        <item itemvalue="Python.pascal_voc_xml2json" />
+        <item itemvalue="Python.scan_my_dataset" />
         <item itemvalue="Python.2.try recursive sreenshots" />
-        <item itemvalue="Python.TEST" />
-        <item itemvalue="Python.1.Try a screenshot" />
+        <item itemvalue="Python.screenshots_from_100_urls" />
+        <item itemvalue="Python.get_all_100_url" />
+        <item itemvalue="Python.Objekte Ausschnitt mit Json" />
       </list>
     </recent_temporary>
   </component>
@@ -259,16 +234,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-436" y="1073" width="1381" height="885" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1381" height="885" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17520416" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24647364" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947312" weight="0.3132695" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49894625" weight="0.36798906" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947312" weight="0.4733242" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49894625" weight="0.19425444" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -289,6 +263,11 @@
           <line>244</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/2.try recursive sreenshots.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -308,6 +287,16 @@
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>cookie</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>all_urls</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>child</expression-string>
         <language-id>Python</language-id>
@@ -375,30 +364,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TEST.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/TEST.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python38/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8243">
           <caret line="395" column="8" selection-start-line="395" selection-start-column="8" selection-end-line="395" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2.try recursive sreenshots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -414,12 +384,18 @@
         <state relative-caret-position="-93070" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uiqa_mini/uiqa_mini.json">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/uiqa_mini/uiqa_mini.json" />
+    <entry file="file://$PROJECT_DIR$/get_all_100_url.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python38/Lib/http/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="264" selection-start-line="264" selection-end-line="264" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Dataset format convert/pascal_voc_xml2json.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2462">
+        <state relative-caret-position="508">
           <caret line="46" selection-start-line="46" selection-end-line="46" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
@@ -429,13 +405,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Objekte Ausschnitt mit Json.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="60" lean-forward="true" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
+        <state relative-caret-position="253">
+          <caret line="13" column="60" selection-start-line="13" selection-start-column="60" selection-end-line="13" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../3D-point-cloud/HW3/KMeans.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1265">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2.try recursive sreenshots.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-115">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
           <folding>
-            <element signature="e#1#22#0" expanded="true" />
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screenshots_from_100_urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1265">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../SCAN_with_custom_dataset/Unsupervised-Classification-master/data/cifar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1472" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scan_my_dataset.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
