@@ -19,7 +19,7 @@ class UIQA(Dataset):
 
     def __init__(self, root=MyPath.db_root_dir('uiqa'), train=True, transform=None):
 
-        super(CIFAR10, self).__init__()
+        super(UIQA , self).__init__()
         self.root = root
         self.transform = transform
         self.train = train  # training set or test set
@@ -32,12 +32,12 @@ class UIQA(Dataset):
         else:
             self.image_name = os.listdir('/content/uiqa_Ausschnitte/val')
 
-        for i in len(self.image_name):
-            num_index = re.search(r'\d', self.image_name[i])
+        for i in range((self.image_name)):
+            num_index = re.search(r'\d', self.image_name[i]).start()
             label = self.image_name[i][:num_index]
             self.target.append(label)
-            img_dir = '/conten/uiqa_Auschnitte/train/'+ self.image_name[i]
-            img = Image.ope(img_dir)
+            img_dir = '/content/uiqa_Auschnitte/train/'+ self.image_name[i]
+            img = Image.open(img_dir)
             self.data.append(img)
 
         self.data = np.vstack(self.data).reshape(-1, 3, 32, 32)

@@ -133,8 +133,8 @@ def get_train_dataset(p, transform, to_augmented_dataset=False,
         dataset = STL10(split=split, transform=transform, download=True)
 
     elif p['train_db_name'] == 'uiqa':
-        from data.uiqa import uiqa
-        dataset = uiqa(train=True, transform=transform)
+        from data.uiqa import UIQA
+        dataset = UIQA(train=True, transform=transform)
 
     elif p['train_db_name'] == 'imagenet':
         from data.imagenet import ImageNet
@@ -176,8 +176,8 @@ def get_val_dataset(p, transform=None, to_neighbors_dataset=False):
         dataset = STL10(split='test', transform=transform, download=True)
 
     elif p['train_db_name'] == 'uiqa':
-        from data.uiqa import uiqa
-        dataset = uiqa(train=False, transform=transform)
+        from data.uiqa import UIQA
+        dataset = UIQA(train=False, transform=transform)
 
     elif p['val_db_name'] == 'imagenet':
         from data.imagenet import ImageNet
