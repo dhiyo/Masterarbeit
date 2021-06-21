@@ -32,11 +32,11 @@ class UIQA(Dataset):
         else:
             self.image_name = os.listdir('/content/uiqa_Ausschnitte/val')
 
-        for i in range((self.image_name)):
+        for i in range(len(self.image_name)):
             num_index = re.search(r'\d', self.image_name[i]).start()
             label = self.image_name[i][:num_index]
             self.target.append(label)
-            img_dir = '/content/uiqa_Auschnitte/train/'+ self.image_name[i]
+            img_dir = '/content/uiqa_Ausschnitte/train/'+ self.image_name[i]
             img = Image.open(img_dir)
             self.data.append(img)
 
