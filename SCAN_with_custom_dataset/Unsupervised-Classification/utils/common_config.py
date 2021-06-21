@@ -44,7 +44,7 @@ def get_feature_dimensions_backbone(p):
 def get_model(p, pretrain_path=None):
     # Get backbone
     if p['backbone'] == 'resnet18':
-        if p['train_db_name'] in ['cifar-10', 'cifar-20']:
+        if p['train_db_name'] in ['cifar-10', 'cifar-20', 'uiqa']:
             from models.resnet_cifar import resnet18
             backbone = resnet18()
 
