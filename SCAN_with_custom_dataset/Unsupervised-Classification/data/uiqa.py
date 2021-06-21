@@ -12,11 +12,6 @@ from utils.mypath import MyPath
 
 class UIQA(Dataset):
 
-
-    url = 'https://bwsyncandshare.kit.edu/s/ydMH5tnQCsj6QXz/download'
-    file_name = 'uiqa_Ausschnitte.zip'
-
-
     def __init__(self, root=MyPath.db_root_dir('uiqa'), train=True, transform=None):
 
         super(UIQA , self).__init__()
@@ -38,10 +33,13 @@ class UIQA(Dataset):
             self.target.append(label)
             img_dir = '/content/uiqa_Ausschnitte/train/'+ self.image_name[i]
             img = Image.open(img_dir)
-            self.data.append(img)
+            x_s = 32  # define standard size
+            y_s = 32
+            out = img.resize((x_s, y_s), Image.ANTIALIAS)
+            self.data.append(out)
 
-        self.data = np.vstack(self.data).reshape(-1, 3, 32, 32)
-        self.data = self.data.transpose((0, 2, 3, 1))
+        # self.data = np.vstack(self.data).reshape(-1, 3, 32, 32)
+        # self.data = self.data.transpose((0, 2, 3, 1))
 
 
     def __getitem__(self, index):
