@@ -14,14 +14,15 @@ class UIQA(Dataset):
 
     def __init__(self, root=MyPath.db_root_dir('uiqa'), train=True, transform=None):
 
-        super(UIQA , self).__init__()
+        super(UIQA, self).__init__()
         self.root = root
         self.transform = transform
         self.train = train  # training set or test set
         self.classes = ['label', 'hint_text', 'textfield', 'range', 'switch', 'textarea', 'validation_text', 'button', 'radio_button', 'checkbox']
 
-        self.target = []
+        self.targets = []
         self.data = []
+
         if self.train:
             self.image_name = os.listdir('/content/uiqa_Ausschnitte/train')
         else:
@@ -30,9 +31,12 @@ class UIQA(Dataset):
         for i in range(len(self.image_name)):
             num_index = re.search(r'\d', self.image_name[i]).start()
             label = self.image_name[i][:num_index]
-            self.target.append(label)
-            img_dir = '/content/uiqa_Ausschnitte/train/'+ self.image_name[i]
-            img = Image.open(img_dir)
+            self.targets.append(label)
+            if train:
+              img_dir = '/content/uiqa_Ausschnitte/train/' + self.image_name[i]
+            else:
+              img_dir = '/content/uiqa_Ausschnitte/val/' + self.image_name[i]
+            img = Image.open(img_dir).convert('RGB')
             x_s = 32  # define standard size
             y_s = 32
             out = img.resize((x_s, y_s), Image.ANTIALIAS)
@@ -50,9 +54,10 @@ class UIQA(Dataset):
             dict: {'image': image, 'target': index of target class, 'meta': dict}
         """
         img, target = self.data[index], self.targets[index]
-        img_size = (img.shape[0], img.shape[1])
+        x, y = img.size
+        img_size = (x, y)
         img = Image.fromarray(img)
-        class_name = self.classes[target]
+        class_name = target
 
         if self.transform is not None:
             img = self.transform(img)
@@ -61,5 +66,7 @@ class UIQA(Dataset):
 
         return out
 
+    def __len__(self):
+        return len(self.data)
 
 
