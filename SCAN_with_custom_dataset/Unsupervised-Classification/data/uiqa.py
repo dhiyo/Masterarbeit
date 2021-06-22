@@ -54,10 +54,12 @@ class UIQA(Dataset):
             dict: {'image': image, 'target': index of target class, 'meta': dict}
         """
         img, target = self.data[index], self.targets[index]
+
+        target = self.classes.index(target)
         x, y = img.size
         img_size = (x, y)
-        img = Image.fromarray(img)
-        class_name = target
+        # img = Image.fromarray(img)
+        class_name = self.classes[target]
 
         if self.transform is not None:
             img = self.transform(img)
