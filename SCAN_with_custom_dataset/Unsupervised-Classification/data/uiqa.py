@@ -1,6 +1,6 @@
 
 import os, shutil
-import  re
+import re
 import pickle
 import sys
 import numpy as np
@@ -60,6 +60,10 @@ class UIQA(Dataset):
         img_size = (x, y)
         # img = Image.fromarray(img)
         class_name = self.classes[target]
+
+        # TODO：
+        #  考虑改变源代码里面的图片尺寸，因为我们的图片并不是正方形的
+        #  不同的类型的尺寸也不一样，也可以作为一个特征
 
         if self.transform is not None:
             img = self.transform(img)

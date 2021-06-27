@@ -3,3 +3,6 @@ Dataset format convert/
 *.zip
 uiqa_Auschnitte/
 *.jpg
+SSDe100/
+PNG-2-CIFAR10-master/
+uiqa_Ausschnitte/
