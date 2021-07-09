@@ -212,6 +212,7 @@ if __name__ == '__main__':
         distributed training; see https://pytorch.org/docs/stable/distributed.html""")
     parser.add_argument("--local_rank", default=0, type=int, help="Please ignore and do not set this argument.")
     parser.add_argument('--data_path', default='/path/to/imagenet/', type=str)
+    parser.add_argument('--num_classes', default=100, type=int, help='claasses needed to cluster')
     args = parser.parse_args()
 
     utils.init_distributed_mode(args)
@@ -250,7 +251,7 @@ if __name__ == '__main__':
     ])
     dataset_train = ReturnIndexDataset(os.path.join(args.data_path, "train"), transform=transform)
 
-    k_classes_classifier(train_features, num_classes=100)
+    k_classes_classifier(train_features, num_classes=args.num_classes)
 
 
 
