@@ -15,6 +15,7 @@ import os
 import argparse
 import numpy as np
 import torch
+import math
 from tqdm import tqdm
 from torch import nn
 import torch.distributed as dist
@@ -197,20 +198,38 @@ def k_classes_classifier(train_features, num_classes=100):
         imgs_size[img_name] = [aspect_ratio, area]
 
     imgs_aspect_ratio = np.empty([len(dataset_train), 1], dtype=float)
-    imgs_area = np.empty([len(dataset_train), 1], dtype=float)
+    imgs_base = np.empty([len(dataset_train), 1], dtype=float)
 
     for i in range(len(dataset_train)):
         img_name = dataset_train.imgs[i][0].split('/')[-1]
         imgs_aspect_ratio[i, :] = imgs_size[img_name][0]
-        imgs_area[i, :] = imgs_size[img_name][1]
+        imgs_base[i, :] = math.sqrt(imgs_size[img_name][1])
 
-    # Train feature mutiplicate aspect ratio
-    train_features = train_features * imgs_aspect_ratio
-    train_features = train_features + imgs_area
+    print('-----------------------')
+    print(np.mean(train_features, axis=1))
+    print(np.mean(imgs_aspect_ratio,axis=0))
+    print(np.mean(imgs_base, axis=0))
+
+    train_features_aspr = np.empty([len(dataset_train), 385], dtype=float)
+    train_features_aspr_base = np.empty([len(dataset_train), 386], dtype=float)
+
+    for i in range(len(dataset_train)):
+      train_features_aspr[i, :] = np.append(train_features[i, :], float(imgs_aspect_ratio[i, :]))
+      train_features_aspr_base[i, :] = np.append(train_features_aspr[i, :], float(imgs_base[i, :]))
+      mean = np.mean(train_features_aspr_base[i, :])
+      std = np.std(train_features_aspr_base[i, :])
+      train_features_aspr_base[i, :] = (train_features_aspr_base[i, :] - mean)/std
+
+    print('-----------------------')
+    print(train_features_aspr_base.shape)
+
+    # # Train feature mutiplicate aspect ratio
+    # train_features = train_features * (imgs_aspect_ratio / np.mean(imgs_aspect_ratio,axis=0))
+    # train_features = train_features * (imgs_base / np.mean(imgs_base, axis=0))
 
     model = KMeans(n_clusters=num_classes, n_jobs=-1, random_state=728)
-    model.fit(train_features)
-    kpredictions = model.predict(train_features)
+    model.fit(train_features_aspr_base)
+    kpredictions = model.predict(train_features_aspr_base)
     os.mkdir('/content/output')
     for i in range(num_classes):
         os.mkdir('/content/output/' + str(i))
