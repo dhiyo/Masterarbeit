@@ -13,7 +13,7 @@
 # limitations under the License.
 import os
 import argparse
-
+import  numpy as np
 import torch
 from tqdm import tqdm
 from torch import nn
@@ -25,18 +25,11 @@ from sklearn.cluster import KMeans
 import shutil
 import utils
 import vision_transformer as vits
+from PIL import Image
 
 
 def extract_feature_pipeline(args):
     # ============ preparing data ... ============
-    transform = pth_transforms.Compose([
-        pth_transforms.Resize(256, interpolation=3),
-        pth_transforms.CenterCrop(224),
-        pth_transforms.ToTensor(),
-        pth_transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
-    ])
-    dataset_train = ReturnIndexDataset(os.path.join(args.data_path, "train"), transform=transform)
-    dataset_val = ReturnIndexDataset(os.path.join(args.data_path, "val"), transform=transform)
     sampler = torch.utils.data.DistributedSampler(dataset_train, shuffle=False)
     data_loader_train = torch.utils.data.DataLoader(
         dataset_train,
@@ -172,6 +165,31 @@ def knn_classifier(train_features, train_labels, test_features, test_labels, k, 
 
 def k_classes_classifier(train_features, num_classes=100):
     train_features = train_features.cpu().data.numpy()
+    # Tensor to np array
+    # torch.Size([8601, 384])
+    # class <'torch.Tensor'>
+
+    data_path = os.path.join(args.data_path , '0')
+    img_list = os.listdir(data_path)
+    imgs_size = {}
+    for img_name in img_list:
+        img = Image.open(os.path.join(data_path, img_name))
+        area = img.size[0] * img.size[1]
+        aspect_ratio = round(img.size[0] / img.size[1], 1)
+        imgs_size[img_name] = [aspect_ratio, area]
+
+
+
+    imgs_aspect_ratio = np.empty((len(dataset_train),1) , dtype=float, order='F')
+    imgs_area = np.empty((len(dataset_train),1), dtype=float, order='F')
+
+    for i in range(len(dataset_train)):
+        imgs_aspect_ratio[:, i] = imgs_size[dataset_train.imgs[i][0]][0]
+        imgs_area[:, i] = imgs_size[dataset_train.imgs[i][0]][1]
+
+    # Train feature mutiplicate aspect ratio
+    train_features = train_features * imgs_area
+
     model = KMeans(n_clusters=num_classes, n_jobs=-1, random_state=728)
     model.fit(train_features)
     kpredictions = model.predict(train_features)
@@ -250,6 +268,7 @@ if __name__ == '__main__':
         pth_transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
     dataset_train = ReturnIndexDataset(os.path.join(args.data_path, "train"), transform=transform)
+    dataset_val = ReturnIndexDataset(os.path.join(args.data_path, "val"), transform=transform)
 
     k_classes_classifier(train_features, num_classes=args.num_classes)
 
