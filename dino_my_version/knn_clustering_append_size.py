@@ -205,8 +205,7 @@ def k_classes_classifier(train_features, num_classes=100):
         img_name = dataset_train.imgs[i][0].split('/')[-1]
         imgs_aspect_ratio[i, :] = imgs_size[img_name][0]
         imgs_base[i, :] = math.sqrt(imgs_size[img_name][1])
-        all_size.append(area)
-        all_aspect_ratio.append(aspect_ratio)
+
 
     print('-----------------------')
     print('featuer mean:',np.mean(train_features, axis=1))
