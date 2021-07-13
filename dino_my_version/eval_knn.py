@@ -191,10 +191,12 @@ def k_classes_classifier(train_features, num_classes=100):
     img_list = os.listdir(data_path)
 
     imgs_size = {}
+    all_size = []
+    all_aspect_ratio = []
     for img_name in img_list:
         img = Image.open(os.path.join(data_path, img_name))
         area = img.size[0] * img.size[1]
-        aspect_ratio = round(img.size[0] / img.size[1], 1)
+        aspect_ratio = img.size[0] / img.size[1]
         imgs_size[img_name] = [aspect_ratio, area]
 
     imgs_aspect_ratio = np.empty([len(dataset_train), 1], dtype=float)
@@ -204,14 +206,20 @@ def k_classes_classifier(train_features, num_classes=100):
         img_name = dataset_train.imgs[i][0].split('/')[-1]
         imgs_aspect_ratio[i, :] = imgs_size[img_name][0]
         imgs_base[i, :] = math.sqrt(imgs_size[img_name][1])
+        all_size.append(area)
+        all_aspect_ratio.append(aspect_ratio)
 
     print('-----------------------')
-    print(np.mean(train_features, axis=1))
-    print(np.mean(imgs_aspect_ratio,axis=0))
-    print(np.mean(imgs_base, axis=0))
+    print('featuer mean:',np.mean(train_features, axis=1))
+    print('max size of the dataset:', max(all_size))
+    print('min size of the dataset:', min(all_size))
+    print('mean size of the dataset:', np.mean(all_size))
+    print('mean aspr of the dataset:', np.mean(all_aspect_ratio))
+    print('max aspr of the dataset:', max(all_aspect_ratio))
+    print('min aspr of the dataset:', min(all_aspect_ratio))
 
-    train_features_aspr = np.empty([len(dataset_train), 385], dtype=float)
-    train_features_aspr_base = np.empty([len(dataset_train), 386], dtype=float)
+    train_features_aspr = np.empty([len(dataset_train), train_features.shape[1] + 1], dtype=float)
+    train_features_aspr_base = np.empty([len(dataset_train), train_features.shape[1] + 1], dtype=float)
 
     for i in range(len(dataset_train)):
       train_features_aspr[i, :] = np.append(train_features[i, :], float(imgs_aspect_ratio[i, :]))
@@ -234,7 +242,8 @@ def k_classes_classifier(train_features, num_classes=100):
     for i in range(num_classes):
         os.mkdir('/content/output/' + str(i))
     for i in tqdm(range(len(dataset_train.imgs))):
-        shutil.copy2(dataset_train.imgs[i][0], '/content/output/' + str(kpredictions[i]))
+        file_name =dataset_train.imgs[i][0].replace('_with_noise', '')
+        shutil.copy2(file_name, '/content/output/' + str(kpredictions[i]))
 
 
 class ReturnIndexDataset(datasets.ImageFolder):
