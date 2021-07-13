@@ -1,11 +1,11 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -187,57 +187,54 @@ def k_classes_classifier(train_features, num_classes=100):
     train_features = train_features.cpu().data.numpy()
     # Tensor to np array([8601, 384])
 
-    data_path = os.path.join(args.data_path, 'train/0')
-    img_list = os.listdir(data_path)
+    # data_path = os.path.join(args.data_path, 'train/0')
+    # img_list = os.listdir(data_path)
+    #
+    # imgs_size = {}
+    # all_size = []
+    # all_aspect_ratio = []
+    # for img_name in img_list:
+    #     img = Image.open(os.path.join(data_path, img_name))
+    #     area = img.size[0] * img.size[1]
+    #     aspect_ratio = img.size[0] / img.size[1]
+    #     imgs_size[img_name] = [aspect_ratio, area]
+    #
+    # imgs_aspect_ratio = np.empty([len(dataset_train), 1], dtype=float)
+    # imgs_base = np.empty([len(dataset_train), 1], dtype=float)
+    #
+    # for i in range(len(dataset_train)):
+    #     img_name = dataset_train.imgs[i][0].split('/')[-1]
+    #     imgs_aspect_ratio[i, :] = imgs_size[img_name][0]
+    #     imgs_base[i, :] = math.sqrt(imgs_size[img_name][1])
+    #     all_size.append(area)
+    #     all_aspect_ratio.append(aspect_ratio)
+    #
+    # print('-----------------------')
+    # print('featuer mean:',np.mean(train_features, axis=1))
+    # print('max size of the dataset:', max(all_size))
+    # print('min size of the dataset:', min(all_size))
+    # print('mean size of the dataset:', np.mean(all_size))
+    # print('mean aspr of the dataset:', np.mean(all_aspect_ratio))
+    # print('max aspr of the dataset:', max(all_aspect_ratio))
+    # print('min aspr of the dataset:', min(all_aspect_ratio))
+    #
+    # train_features_aspr = np.empty([len(dataset_train), train_features.shape[1] + 1], dtype=float)
+    # train_features_aspr_base = np.empty([len(dataset_train), train_features.shape[1] + 1], dtype=float)
+    #
+    # for i in range(len(dataset_train)):
+    #   train_features_aspr[i, :] = np.append(train_features[i, :], float(imgs_aspect_ratio[i, :]))
+    #   train_features_aspr_base[i, :] = np.append(train_features_aspr[i, :], float(imgs_base[i, :]))
+    #   mean = np.mean(train_features_aspr_base[i, :])
+    #   std = np.std(train_features_aspr_base[i, :])
+    #   train_features_aspr_base[i, :] = (train_features_aspr_base[i, :] - mean)/std
+    #
+    # print('-----------------------')
+    # print(train_features_aspr_base.shape)
 
-    imgs_size = {}
-    all_size = []
-    all_aspect_ratio = []
-    for img_name in img_list:
-        img = Image.open(os.path.join(data_path, img_name))
-        area = img.size[0] * img.size[1]
-        aspect_ratio = img.size[0] / img.size[1]
-        imgs_size[img_name] = [aspect_ratio, area]
-
-    imgs_aspect_ratio = np.empty([len(dataset_train), 1], dtype=float)
-    imgs_base = np.empty([len(dataset_train), 1], dtype=float)
-
-    for i in range(len(dataset_train)):
-        img_name = dataset_train.imgs[i][0].split('/')[-1]
-        imgs_aspect_ratio[i, :] = imgs_size[img_name][0]
-        imgs_base[i, :] = math.sqrt(imgs_size[img_name][1])
-        all_size.append(area)
-        all_aspect_ratio.append(aspect_ratio)
-
-    print('-----------------------')
-    print('featuer mean:',np.mean(train_features, axis=1))
-    print('max size of the dataset:', max(all_size))
-    print('min size of the dataset:', min(all_size))
-    print('mean size of the dataset:', np.mean(all_size))
-    print('mean aspr of the dataset:', np.mean(all_aspect_ratio))
-    print('max aspr of the dataset:', max(all_aspect_ratio))
-    print('min aspr of the dataset:', min(all_aspect_ratio))
-
-    train_features_aspr = np.empty([len(dataset_train), train_features.shape[1] + 1], dtype=float)
-    train_features_aspr_base = np.empty([len(dataset_train), train_features.shape[1] + 1], dtype=float)
-
-    for i in range(len(dataset_train)):
-      train_features_aspr[i, :] = np.append(train_features[i, :], float(imgs_aspect_ratio[i, :]))
-      train_features_aspr_base[i, :] = np.append(train_features_aspr[i, :], float(imgs_base[i, :]))
-      mean = np.mean(train_features_aspr_base[i, :])
-      std = np.std(train_features_aspr_base[i, :])
-      train_features_aspr_base[i, :] = (train_features_aspr_base[i, :] - mean)/std
-
-    print('-----------------------')
-    print(train_features_aspr_base.shape)
-
-    # # Train feature mutiplicate aspect ratio
-    # train_features = train_features * (imgs_aspect_ratio / np.mean(imgs_aspect_ratio,axis=0))
-    # train_features = train_features * (imgs_base / np.mean(imgs_base, axis=0))
 
     model = KMeans(n_clusters=num_classes, n_jobs=-1, random_state=728)
-    model.fit(train_features_aspr_base)
-    kpredictions = model.predict(train_features_aspr_base)
+    model.fit(train_features)
+    kpredictions = model.predict(train_features)
     os.mkdir('/content/output')
     for i in range(num_classes):
         os.mkdir('/content/output/' + str(i))
@@ -308,6 +305,3 @@ if __name__ == '__main__':
     # dist.barrier()
 
     k_classes_classifier(train_features, num_classes=args.num_classes)
-
-
-
