@@ -197,6 +197,9 @@ def k_classes_classifier(train_features, num_classes=100):
         area = img.size[0] * img.size[1]
         aspect_ratio = img.size[0] / img.size[1]
         imgs_size[img_name] = [aspect_ratio, area]
+        all_aspect_ratio.append(aspect_ratio)
+        all_size.append(area)
+
 
     imgs_aspect_ratio = np.empty([len(dataset_train), 1], dtype=float)
     imgs_base = np.empty([len(dataset_train), 1], dtype=float)
@@ -217,7 +220,7 @@ def k_classes_classifier(train_features, num_classes=100):
     print('min aspr of the dataset:', min(all_aspect_ratio))
 
     train_features_aspr = np.empty([len(dataset_train), train_features.shape[1] + 1], dtype=float)
-    train_features_aspr_base = np.empty([len(dataset_train), train_features.shape[1] + 1], dtype=float)
+    train_features_aspr_base = np.empty([len(dataset_train), train_features.shape[1] + 2], dtype=float)
 
     for i in range(len(dataset_train)):
       train_features_aspr[i, :] = np.append(train_features[i, :], float(imgs_aspect_ratio[i, :]))
