@@ -26,7 +26,7 @@ from torchvision import transforms as pth_transforms
 from sklearn.cluster import KMeans
 import shutil
 import utils
-import vision_transformer as vits
+from vision_transformer import *
 from PIL import Image
 
 
@@ -62,10 +62,17 @@ def extract_feature_pipeline(args):
 
     # ============ building network ... ============
     model = torchvision_models.__dict__[args.arch]()
+    embed_dim = model.fc.weight.shape[1]
     print(f"Model {args.arch} {args.patch_size}x{args.patch_size} built.")
+    model = utils.MultiCropWrapper(model, DINOHead(
+        embed_dim,
+        args.out_dim,
+        use_bn=args.use_bn_in_head,
+        norm_last_layer=False,
+    ))
     model.cuda()
     state_dict = torch.load(args.pretrained_weights)['teacher']
-    state_dict = {k.replace("module.", ""): v for k, v in state_dict.items()}
+    # state_dict = {k.replace("module.", ""): v for k, v in state_dict.items()}
     # remove `backbone.` prefix induced by multicrop wrapper
     state_dict = {k.replace("backbone.", ""): v for k, v in state_dict.items()}
     model.load_state_dict(state_dict)
@@ -190,6 +197,10 @@ if __name__ == '__main__':
     parser.add_argument("--local_rank", default=0, type=int, help="Please ignore and do not set this argument.")
     parser.add_argument('--data_path', default='/path/to/imagenet/', type=str)
     parser.add_argument('--num_classes', default=100, type=int, help='claasses needed to cluster')
+    parser.add_argument('--out_dim', default=65536, type=int, help="""Dimensionality of
+        the DINO head output. For complex and large datasets large values (like 65k) work well.""")
+    parser.add_argument('--use_bn_in_head', default=False, type=utils.bool_flag,
+        help="Whether to use batch normalizations in projection head (Default: False)")
     args = parser.parse_args()
 
     utils.init_distributed_mode(args)
