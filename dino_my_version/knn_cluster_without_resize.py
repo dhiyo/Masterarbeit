@@ -35,7 +35,7 @@ def extract_feature_pipeline(args):
 
     transform = pth_transforms.Compose([
         # pth_transforms.Resize(256, interpolation=3),
-        # pth_transforms.CenterCrop(224),
+        pth_transforms.CenterCrop(224),
         pth_transforms.ToTensor(),
         pth_transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
@@ -72,9 +72,9 @@ def extract_feature_pipeline(args):
     ))
     model.cuda()
     state_dict = torch.load(args.pretrained_weights)['teacher']
-    # state_dict = {k.replace("module.", ""): v for k, v in state_dict.items()}
+    state_dict = {k.replace("module.", ""): v for k, v in state_dict.items()}
     # remove `backbone.` prefix induced by multicrop wrapper
-    state_dict = {k.replace("backbone.", ""): v for k, v in state_dict.items()}
+    #state_dict = {k.replace("backbone.", ""): v for k, v in state_dict.items()}
     model.load_state_dict(state_dict)
     model.eval()
 
