@@ -213,7 +213,6 @@ def k_classes_classifier(train_features, num_classes=100):
         all_aspect_ratio.append(aspect_ratio)
         all_size.append(area)
 
-
     imgs_aspect_ratio = np.empty([len(dataset_train), 1], dtype=float)
     imgs_base = np.empty([len(dataset_train), 1], dtype=float)
 
@@ -277,7 +276,7 @@ if __name__ == '__main__':
     parser.add_argument('--use_cuda', default=True, type=utils.bool_flag,
                         help="Should we store the features on GPU? We recommend setting this to False if you encounter OOM")
     parser.add_argument('--arch', default='vit_small', type=str,
-                        choices=['vit_tiny', 'vit_small', 'vit_base'], help='Architecture (support only ViT atm).')
+                        choices=['vit_tiny','resnet50', 'vit_small', 'vit_base'], help='Architecture (support only ViT atm).')
     parser.add_argument('--patch_size', default=16, type=int, help='Patch resolution of the model.')
     parser.add_argument("--checkpoint_key", default="teacher", type=str,
                         help='Key to use in the checkpoint (example: "teacher")')
@@ -294,6 +293,7 @@ if __name__ == '__main__':
          the DINO head output. For complex and large datasets large values (like 65k) work well.""")
     parser.add_argument('--use_bn_in_head', default=False, type=utils.bool_flag,
                         help="Whether to use batch normalizations in projection head (Default: False)")
+    parser.add_argument('--num_classes', default=50, type=int, help='claasses needed to cluster')
     args = parser.parse_args()
 
     utils.init_distributed_mode(args)

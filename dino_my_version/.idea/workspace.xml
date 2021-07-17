@@ -11,8 +11,6 @@
       <change beforePath="$PROJECT_DIR$/../Try Selenium/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Try Selenium/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Try Selenium/adblock_3_11_0_0.crx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Try Selenium/screenshots_from_100_urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Try Selenium/screenshots_from_100_urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/knn_cluster_without_resize.py" beforeDir="false" afterPath="$PROJECT_DIR$/knn_cluster_without_resize.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/knn_clustering_append_size.py" beforeDir="false" afterPath="$PROJECT_DIR$/knn_clustering_append_size.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -71,8 +69,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/knn_clustering_append_size.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3312">
-              <caret line="192" column="37" selection-start-line="192" selection-start-column="37" selection-end-line="192" selection-end-column="37" />
+            <state relative-caret-position="552">
+              <caret line="312" column="31" lean-forward="true" selection-start-line="312" selection-start-column="31" selection-end-line="312" selection-end-column="31" />
               <folding>
                 <element signature="e#600#609#0" expanded="true" />
               </folding>
@@ -83,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/knn_cluster_without_resize.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="199" column="1" selection-start-line="199" selection-start-column="1" selection-end-line="202" selection-end-column="87" />
+            <state relative-caret-position="506">
+              <caret line="198" selection-start-line="198" selection-end-line="198" selection-end-column="98" />
               <folding>
                 <element signature="e#597#606#0" expanded="true" />
               </folding>
@@ -761,8 +759,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/knn_cluster_without_resize.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="199" column="1" selection-start-line="199" selection-start-column="1" selection-end-line="202" selection-end-column="87" />
+        <state relative-caret-position="506">
+          <caret line="198" selection-start-line="198" selection-end-line="198" selection-end-column="98" />
           <folding>
             <element signature="e#597#606#0" expanded="true" />
           </folding>
@@ -771,8 +769,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/knn_clustering_append_size.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3312">
-          <caret line="192" column="37" selection-start-line="192" selection-start-column="37" selection-end-line="192" selection-end-column="37" />
+        <state relative-caret-position="552">
+          <caret line="312" column="31" lean-forward="true" selection-start-line="312" selection-start-column="31" selection-end-line="312" selection-end-column="31" />
           <folding>
             <element signature="e#600#609#0" expanded="true" />
           </folding>
