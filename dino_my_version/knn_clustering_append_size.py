@@ -15,6 +15,7 @@ import os
 import argparse
 import numpy as np
 import torch
+from torchvision import models as torchvision_models
 import math
 from tqdm import tqdm
 from torch import nn
@@ -25,7 +26,7 @@ from torchvision import transforms as pth_transforms
 from sklearn.cluster import KMeans
 import shutil
 import utils
-import vision_transformer as vits
+from vision_transformer import *
 from PIL import Image
 
 
@@ -60,11 +61,23 @@ def extract_feature_pipeline(args):
     print(f"Data loaded with {len(dataset_train)} train and {len(dataset_val)} val imgs.")
 
     # ============ building network ... ============
-    model = vits.__dict__[args.arch](patch_size=args.patch_size, num_classes=0)
+    model = torchvision_models.__dict__[args.arch]()
+    embed_dim = model.fc.weight.shape[1]
     print(f"Model {args.arch} {args.patch_size}x{args.patch_size} built.")
+    model = utils.MultiCropWrapper(model, DINOHead(
+        embed_dim,
+        args.out_dim,
+        use_bn=args.use_bn_in_head,
+        norm_last_layer=False,
+    ))
     model.cuda()
-    utils.load_pretrained_weights(model, args.pretrained_weights, args.checkpoint_key, args.arch, args.patch_size)
+    state_dict = torch.load(args.pretrained_weights)['teacher']
+    state_dict = {k.replace("module.", ""): v for k, v in state_dict.items()}
+    # remove `backbone.` prefix induced by multicrop wrapper
+    #state_dict = {k.replace("backbone.", ""): v for k, v in state_dict.items()}
+    model.load_state_dict(state_dict)
     model.eval()
+
 
     # ============ extract features ... ============
     print("Extracting features for train set...")
@@ -177,7 +190,7 @@ def knn_classifier(train_features, train_labels, test_features, test_labels, k, 
 def k_classes_classifier(train_features, num_classes=100):
     transform = pth_transforms.Compose([
         pth_transforms.Resize(256, interpolation=3),
-        pth_transforms.CenterCrop(224),
+        pth_transforms.CenterCrop(256),
         pth_transforms.ToTensor(),
         pth_transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
@@ -277,7 +290,10 @@ if __name__ == '__main__':
         distributed training; see https://pytorch.org/docs/stable/distributed.html""")
     parser.add_argument("--local_rank", default=0, type=int, help="Please ignore and do not set this argument.")
     parser.add_argument('--data_path', default='/path/to/imagenet/', type=str)
-    parser.add_argument('--num_classes', default=100, type=int, help='claasses needed to cluster')
+    parser.add_argument('--out_dim', default=65536, type=int, help="""Dimensionality of
+         the DINO head output. For complex and large datasets large values (like 65k) work well.""")
+    parser.add_argument('--use_bn_in_head', default=False, type=utils.bool_flag,
+                        help="Whether to use batch normalizations in projection head (Default: False)")
     args = parser.parse_args()
 
     utils.init_distributed_mode(args)

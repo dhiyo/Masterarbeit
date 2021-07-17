@@ -34,8 +34,8 @@ def extract_feature_pipeline(args):
     # ============ preparing data ... ============
 
     transform = pth_transforms.Compose([
-        # pth_transforms.Resize(256, interpolation=3),
-        pth_transforms.CenterCrop(224),
+        pth_transforms.Resize(256, interpolation=3),
+        pth_transforms.CenterCrop(256),
         pth_transforms.ToTensor(),
         pth_transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
     ])
